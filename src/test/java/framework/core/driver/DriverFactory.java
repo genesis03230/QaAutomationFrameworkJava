@@ -45,10 +45,7 @@ public final class DriverFactory {
         }
 
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(ConfigManager.getPageLoadTimeoutSeconds()));
-
-        // Recomendación empresa: implicitWait en 0, usamos explícitos centralizados
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ConfigManager.getImplicitWaitSeconds()));
-
         return driver;
     }
 }

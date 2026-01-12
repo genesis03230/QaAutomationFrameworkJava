@@ -40,7 +40,7 @@ public final class Waits {
         } catch (StaleElementReferenceException e) {
             clickable(locator).click();
         } catch (ElementClickInterceptedException e) {
-            // fallback simple: JS click
+
             WebElement el = clickable(locator);
             ((JavascriptExecutor) DriverManager.getDriver()).executeScript("arguments[0].click();", el);
         }

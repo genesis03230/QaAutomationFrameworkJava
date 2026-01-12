@@ -18,6 +18,12 @@ public class Hooks {
         WebDriver driver = DriverFactory.createDriver();
         DriverManager.setDriver(driver);
 
+        driver.manage().deleteAllCookies();
+
+        try {
+            ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("window.localStorage.clear(); window.sessionStorage.clear();");
+        } catch (Exception ignored) {}
+
         driver.get(ConfigManager.getBaseUrl());
     }
 

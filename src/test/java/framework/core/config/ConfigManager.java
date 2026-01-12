@@ -33,7 +33,6 @@ public final class ConfigManager {
     private static String get(String key) {
         init();
 
-        // Permite override por -Dkey=value en Maven/CI
         String sys = System.getProperty(key);
         if (sys != null && !sys.isBlank()) return sys;
 
