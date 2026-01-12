@@ -71,12 +71,12 @@ Scenario: Add product without selection
 
 Run all smoke tests
 ```gherkin
-mvn test -Dcucumber.filter.tags=@smoke
+mvn test '-Dcucumber.filter.tags=@smoke'
 ```
 
 Run only negative tests
 ```gherkin
-mvn test -Dcucumber.filter.tags=@negative
+mvn test '-Dcucumber.filter.tags=@negative'
 ```
 
 Run all tests
