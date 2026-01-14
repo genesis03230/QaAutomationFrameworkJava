@@ -1,14 +1,13 @@
 package framework.core.driver;
 
 import framework.core.config.ConfigManager;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import java.time.Duration;
 
@@ -23,19 +22,16 @@ public final class DriverFactory {
 
         switch (browser) {
             case FIREFOX -> {
-                WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions options = new FirefoxOptions();
                 if (headless) options.addArguments("-headless");
                 driver = new FirefoxDriver(options);
             }
             case EDGE -> {
-                WebDriverManager.edgedriver().setup();
                 EdgeOptions options = new EdgeOptions();
                 if (headless) options.addArguments("--headless=new");
                 driver = new EdgeDriver(options);
             }
             case CHROME -> {
-                WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 if (headless) options.addArguments("--headless=new");
                 options.addArguments("--start-maximized");
@@ -46,6 +42,7 @@ public final class DriverFactory {
 
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(ConfigManager.getPageLoadTimeoutSeconds()));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ConfigManager.getImplicitWaitSeconds()));
+
         return driver;
     }
 }
